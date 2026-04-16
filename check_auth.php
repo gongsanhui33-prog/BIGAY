@@ -2,8 +2,8 @@
 session_start(); // 啟動 Session
 require_once('db_config.php');
 
-$userid = $_POST['username'];
-$userpwd = $_POST['password'];
+$userid mysqli_real_escape_string($_POST['username']);
+$userpwd mysqli_real_escape_string( $_POST['password']);
 
 $query = "SELECT * FROM users WHERE username = '$userid' AND password = '$userpwd'";
 $result = mysqli_query($conn, $query);
